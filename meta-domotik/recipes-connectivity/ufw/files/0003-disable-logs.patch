@@ -1,0 +1,9 @@
+diff -ruN ufw-0.36.1.orig/conf/ufw.conf ufw-0.36.1/conf/ufw.conf
+--- ufw-0.36.1.orig/conf/ufw.conf	2023-03-13 15:12:20.539373681 +0100
++++ ufw-0.36.1/conf/ufw.conf	2023-03-13 15:12:48.931472108 +0100
+@@ -7,4 +7,4 @@
+ 
+ # Please use the 'ufw' command to set the loglevel. Eg: 'ufw logging medium'.
+ # See 'man ufw' for details.
+-LOGLEVEL=low
++LOGLEVEL=off

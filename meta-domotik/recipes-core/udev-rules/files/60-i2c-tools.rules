@@ -1,0 +1,1 @@
+SUBSYSTEMS=="i2c", ACTION=="add", GROUP="i2c", MODE="0660"

@@ -1,0 +1,18 @@
+[Unit]
+Description=Io server
+StartLimitIntervalSec=300
+StartLimitBurst=5
+After=gpsd.service pigpiod.service
+
+[Service]
+WorkingDirectory=/home/domotik
+# ExecStart=/usr/bin/domotik -c /etc/domotik.toml
+ExecStart=/usr/bin/domotik
+User=domotik
+Group=domotik
+Restart=on-failure
+RestartSec=10s
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target

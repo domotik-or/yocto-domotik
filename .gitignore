@@ -1,0 +1,7 @@
+*~
+build*/*
+!build*/conf
+build*/conf/templateconf.cfg
+.ccls-cache
+downloads
+sstate-cache
