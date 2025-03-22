@@ -1,13 +1,13 @@
 [Unit]
-Description=Io server
+Description=Automation script
 StartLimitIntervalSec=300
 StartLimitBurst=5
-After=gpsd.service pigpiod.service
+After=python3-domotik.service
 
 [Service]
 WorkingDirectory=/home/domotik
-# ExecStart=/usr/bin/domotik -c /etc/domotik.toml
-ExecStart=/usr/bin/domotik
+# Environment="PYTHONPATH=/home/domotik"
+ExecStart=/usr/bin/automation -c /etc/domotik/automation.toml
 User=domotik
 Group=domotik
 Restart=on-failure

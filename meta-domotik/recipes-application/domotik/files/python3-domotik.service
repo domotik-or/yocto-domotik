@@ -1,0 +1,18 @@
+[Unit]
+Description=Linky
+StartLimitIntervalSec=300
+StartLimitBurst=5
+After=pigpiod.service
+
+[Service]
+WorkingDirectory=/home/domotik
+# Environment="PYTHONPATH=/home/domotik"
+ExecStart=/usr/bin/domotik -c /etc/domotik/domotik.toml
+User=domotik
+Group=domotik
+Restart=on-failure
+RestartSec=10s
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target

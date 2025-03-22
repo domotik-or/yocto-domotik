@@ -1,0 +1,8 @@
+[Unit]
+Description=Clear systemctl journal
+
+[Service]
+ExecStart=/usr/bin/journalctl --flush --rotate ; /usr/bin/journalctl --vacuum-time=2d
+
+[Install]
+WantedBy=multi.user.target
