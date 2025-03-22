@@ -407,3 +407,5 @@ LICENSE:${PN} = "GPLv3"
 # LICENSE:${PN}-zigbee-herdsman = "MIT"
 # LICENSE:${PN}-zigbee-herdsman-converters = "MIT"
 # LICENSE:${PN}-zigbee2mqtt-frontend = "Unknown"
+
+INSANE_SKIP:${PN} += "already-stripped arch file-rdeps"

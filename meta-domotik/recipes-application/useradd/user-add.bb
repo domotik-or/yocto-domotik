@@ -5,6 +5,7 @@ PR = "r1"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 SRC_URI = "file://domotik-ssh-key.pub \
           "
 
@@ -25,7 +26,7 @@ USERADD_PARAM:${PN} = "-p '\$5\$00000000\$EexRKUwOMtYkYl6TNNON2KP4j3mogiFKoIo26C
 do_install () {
 	install -d -m 700 ${D}/home/domotik
 	install -d -m 700 ${D}/home/domotik/.ssh
-	install -p -m 600 ${S}/domotik-ssh-key.pub ${D}/home/domotik/.ssh/authorized_keys
+	install -p -m 600 ${WORKDIR}/domotik-ssh-key.pub ${D}/home/domotik/.ssh/authorized_keys
 	chown -R domotik ${D}/home/domotik
 	chgrp -R domotik ${D}/home/domotik
 }
