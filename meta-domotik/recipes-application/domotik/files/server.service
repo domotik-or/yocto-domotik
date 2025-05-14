@@ -1,13 +1,13 @@
 [Unit]
-Description=Automation script
+Description=Server
 StartLimitIntervalSec=300
 StartLimitBurst=5
-After=python3-domotik.service
+After=postgresql.service
 
 [Service]
 WorkingDirectory=/home/domotik
-# Environment="PYTHONPATH=/home/domotik"
-ExecStart=/usr/bin/automation -c /etc/domotik/automation.toml
+# Environment=""
+ExecStart=/usr/bin/server -c /etc/domotik/server.toml
 User=domotik
 Group=domotik
 Restart=on-failure

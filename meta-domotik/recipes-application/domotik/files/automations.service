@@ -1,13 +1,13 @@
 [Unit]
-Description=Linky
+Description=Automation script
 StartLimitIntervalSec=300
 StartLimitBurst=5
-After=pigpiod.service
+After=python3-domio.service
 
 [Service]
 WorkingDirectory=/home/domotik
 # Environment="PYTHONPATH=/home/domotik"
-ExecStart=/usr/bin/domotik -c /etc/domotik/domotik.toml
+ExecStart=/usr/bin/automations -c /etc/domotik/automations.toml
 User=domotik
 Group=domotik
 Restart=on-failure
