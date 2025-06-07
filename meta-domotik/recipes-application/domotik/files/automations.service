@@ -6,7 +6,7 @@ After=python3-domio.service
 
 [Service]
 WorkingDirectory=/home/domotik
-# Environment="PYTHONPATH=/home/domotik"
+# Environment=""
 ExecStart=/usr/bin/automations -c /etc/domotik/automations.toml
 User=domotik
 Group=domotik

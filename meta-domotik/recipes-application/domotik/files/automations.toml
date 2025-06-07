@@ -1,0 +1,34 @@
+[general]
+dotenv_filename = "/etc/domotik/automations.env"
+
+[mqtt]
+hostname = "localhost"
+port = 1883
+
+[domio]
+hostname = "localhost"
+port = 8100
+
+[smtp]
+hostname = "smtp.gmail.com"
+port = 587
+
+[linky]
+apparent_power_alert = 250
+check_time = "23:30"
+
+[logger]
+aiohttp = "WARNING"
+
+[logger.automations]
+automations = "INFO"
+
+[postgresql]
+hostname = "localhost"
+port = 5432
+username = "domotik"
+databasename = "domotiq"
+
+[periodicity]
+pressure = 600
+linky = 60

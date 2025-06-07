@@ -1,0 +1,31 @@
+[general]
+altitude = 326.0
+dotenv_filename = "/etc/domotik/server.env"
+
+[tcp-ip]
+port = 8085
+
+[logger]
+aiohttp = "WARNING"
+
+[logger.server]
+db = "INFO"
+queries = "INFO"
+
+[postgresql]
+hostname = "localhost"
+port = 5432
+username = "domotik"
+databasename = "domotiq"
+
+[devices]
+snzb02p = ["sejour", "chambre_haut"]
+events = ["doorbell"]
+
+[graph]
+pressure_min = 985
+pressure_max = 1035
+indoor_temperature_min = 10.0
+indoor_temperature_max = 25.0
+indoor_hygrometry_min = 40.0
+indoor_hygrometry_max = 90.0

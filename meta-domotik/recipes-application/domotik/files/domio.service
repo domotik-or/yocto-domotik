@@ -6,7 +6,7 @@ After=pigpiod.service
 
 [Service]
 WorkingDirectory=/home/domotik
-# Environment="PYTHONPATH=/home/domotik"
+# Environment=""
 ExecStart=/usr/bin/domio -c /etc/domotik/domio.toml
 User=domotik
 Group=domotik

@@ -1,0 +1,15 @@
+# Source: https://community.toradex.com/t/bring-up-can0-on-boot/8231
+
+[Unit]
+Description=Setup SocketCAN interface can0 with a baudrate of 125000
+After=multi-user.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStartPre=/sbin/ip link set can0 type can bitrate 125000
+ExecStart=/sbin/ip link set can0 up
+ExecStop=/sbin/ip link set can0 down
+
+[Install]
+WantedBy=multi-user.target
