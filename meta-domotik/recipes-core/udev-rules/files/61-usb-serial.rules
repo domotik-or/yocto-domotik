@@ -1,6 +1,3 @@
 # priority must be less than the file /lib/udev/rules.d/60-serial.rules
-SUBSYSTEM=="tty", ATTRS{idVendor}=="1e0e", ATTRS{idProduct}=="9001", ENV{ID_USB_INTERFACE_NUM}=="01", SYMLINK+="sim7600-gps"
-SUBSYSTEM=="tty", ATTRS{idVendor}=="1e0e", ATTRS{idProduct}=="9001", ENV{ID_USB_INTERFACE_NUM}=="02", SYMLINK+="sim7600-at"
-
-SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="55d3", SYMLINK+="aquaread"
-SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="airmar"
+# cp2102 & (hc-12 | Xbee S2C)
+SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", SYMLINK+="hc12"
