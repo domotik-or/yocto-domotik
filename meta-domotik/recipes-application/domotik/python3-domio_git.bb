@@ -25,8 +25,8 @@ RDEPENDS:${PN} += " \
     pigpio \
     ${PYTHON_PN}-aiohttp \
     ${PYTHON_PN}-aiomqtt \
+    ${PYTHON_PN}-can \
     ${PYTHON_PN}-pyserial \
-    ${PYTHON_PN}-pyserial-asyncio \
 "
 
 SYSTEMD_SERVICE:${PN} = "domio.service"

@@ -2,7 +2,7 @@
 Description=Server
 StartLimitIntervalSec=300
 StartLimitBurst=5
-After=postgresql.service
+After=automations.service
 
 [Service]
 WorkingDirectory=/home/domotik

@@ -23,9 +23,10 @@ inherit python_flit_core systemd
 
 RDEPENDS:${PN} += " \
     ${PYTHON_PN}-aiohttp \
-    ${PYTHON_PN}-asyncpg \
-    ${PYTHON_PN}-matplotlib \
+    ${PYTHON_PN}-aiosqlite \
     ${PYTHON_PN}-dotenv \
+    ${PYTHON_PN}-matplotlib \
+    ${PYTHON_PN}-qbstyles \
 "
 
 SYSTEMD_SERVICE:${PN} = "server.service"

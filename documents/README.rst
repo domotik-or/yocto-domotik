@@ -54,6 +54,15 @@ Eexemple  pour changer la valeur de la variable variable ALTERNATIVE_PRIORITY
 
     recipetool newappend ../meta-move coreutils
 
+Faire de la place sur le disque dur
+-----------------------------------
+
+Dans le répertoire `sstate-cache` :
+
+.. code-block:: console
+
+    ./scripts/sstate-cache-management.py --remove-duplicated -d --cache-dir=/mnt/yocto/domotik/sstate-cache
+
 Actions sur machine cible
 =========================
 
@@ -62,62 +71,70 @@ Mise à jour de l'eeprom
 
 .. code-block:: console
 
-    sudo update
-    sudo upgrade
+    $ sudo update
+    $ sudo upgrade
+    $ sudo rpi-update
+     *** Raspberry Pi firmware updater by Hexxeh, enhanced by AndrewS and Dom
+     *** Performing self-update
+     *** Relaunching after update
+     *** Raspberry Pi firmware updater by Hexxeh, enhanced by AndrewS and Dom
+    FW_REV:a67c296696394371bb9b5dfafcdda35457cc86e2
+    BOOTLOADER_REV:37ee92a8b6a2366fc80c9fb8f25b474a7865f9b6
+     *** We're running for the first time
+     *** Backing up files (this will take a few minutes)
+     *** Remove old firmware backup
+     *** Backing up firmware
+     *** Remove old modules backup
+     *** Backing up modules 6.12.20+rpt-rpi-v8
+    WANT_32BIT:1 WANT_64BIT:1 WANT_64BIT_RT:0 WANT_PI4:1 WANT_PI5:0
+    ##############################################################
+    WARNING: This update bumps to rpi-6.12.y linux tree
+    See discussions at:
+    https://forums.raspberrypi.com/viewtopic.php?t=379745
+    ##############################################################
+    Would you like to proceed? (y/N)
+    Downloading bootloader tools
+    Downloading bootloader images
+     *** Downloading specific firmware revision (this will take a few minutes)
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                     Dload  Upload   Total   Spent    Left  Speed
+      0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+    100  185M  100  185M    0     0   779k      0  0:04:03  0:04:03 --:--:-- 1750k
+    *** PREPARING EEPROM UPDATES ***
 
-    domotik@raspberrypi:/lib/firmware/raspberrypi $ sudo rpi-update
+    BOOTLOADER: update available
+       CURRENT: Tue 25 Jan 14:30:41 UTC 2022 (1643121041)
+        LATEST: Thu  3 Jul 14:56:45 UTC 2025 (1751554605)
+       RELEASE: latest (/usr/lib/firmware/raspberrypi/bootloader-2711/latest)
+                Use raspi-config to change the release.
 
-	 *** Raspberry Pi firmware updater by Hexxeh, enhanced by AndrewS and Dom
-	 *** Performing self-update
-	 *** Relaunching after update
-	 *** Raspberry Pi firmware updater by Hexxeh, enhanced by AndrewS and Dom
-	FW_REV:3608b77cd4557513506dbc098db04938439804aa
-	BOOTLOADER_REV:78d08e9763079c6608506e25eefeee5ceb0ceabc
-	 *** We're running for the first time
-	 *** Backing up files (this will take a few minutes)
-	 *** Remove old firmware backup
-	 *** Backing up firmware
-	 *** Remove old modules backup
-	 *** Backing up modules 6.6.74+rpt-rpi-v8
-	WANT_32BIT:1 WANT_64BIT:1 WANT_PI4:1 WANT_PI5:0
-	##############################################################
-	WARNING: This update bumps to rpi-6.12.y linux tree
-	See discussions at:
-	https://forums.raspberrypi.com/viewtopic.php?t=379745
-	##############################################################
-	Would you like to proceed? (y/N)
-	Downloading bootloader tools
+      VL805_FW: Dedicated VL805 EEPROM
+         VL805: up to date
+       CURRENT: 000138c0
+        LATEST: 000138c0
+       CURRENT: Tue 25 Jan 14:30:41 UTC 2022 (1643121041)
+        UPDATE: Thu  3 Jul 14:56:45 UTC 2025 (1751554605)
+        BOOTFS: /boot/firmware
+    '/tmp/tmp.y1Z4rajnTl' -> '/boot/firmware/pieeprom.upd'
+    Copying recovery.bin to /boot/firmware for EEPROM update
 
-	Downloading bootloader images
-	 *** Downloading specific firmware revision (this will take a few minutes)
-	  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-									 Dload  Upload   Total   Spent    Left  Speed
-	  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-	100  151M  100  151M    0     0   850k      0  0:03:02  0:03:02 --:--:-- 1568k
-	BOOTLOADER: up to date
-	   CURRENT: Tue 11 Feb 17:00:13 UTC 2025 (1739293213)
-		LATEST: Tue 11 Feb 17:00:13 UTC 2025 (1739293213)
-	   RELEASE: latest (/usr/lib/firmware/raspberrypi/bootloader-2711/latest)
-				Use raspi-config to change the release.
-
-	  VL805_FW: Using bootloader EEPROM
-		 VL805: up to date
-	   CURRENT: 000138c0
-		LATEST: 000138c0
-	 *** Updating firmware
-	 *** Updating kernel modules
-	 *** depmod 6.12.18-v8-16k+
-	 *** depmod 6.12.18-v8+
-	 *** depmod 6.12.18-v7l+
-	 *** depmod 6.12.18+
-	 *** depmod 6.12.18-v7+
-	 *** Updating VideoCore libraries
-	 *** Running ldconfig
-	 *** Storing current firmware revision
-	 *** Deleting downloaded files
-	 *** Syncing changes to disk
-	 *** If no errors appeared, your firmware was successfully updated to 3608b77cd4557513506dbc098db04938439804aa
-	 *** A reboot is needed to activate the new firmware
+    EEPROM updates pending. Please reboot to apply the update.
+    To cancel a pending update run "sudo rpi-eeprom-update -r".
+     *** Updating firmware
+     *** Updating kernel modules
+     *** depmod 6.12.35-v7+
+     *** depmod 6.12.35-v8-rt+
+     *** depmod 6.12.35+
+     *** depmod 6.12.35-v8-16k+
+     *** depmod 6.12.35-v8+
+     *** depmod 6.12.35-v7l+
+     *** Updating VideoCore libraries
+     *** Running ldconfig
+     *** Storing current firmware revision
+     *** Deleting downloaded files
+     *** Syncing changes to disk
+     *** If no errors appeared, your firmware was successfully updated to a67c296696394371bb9b5dfafcdda35457cc86e2
+     *** A reboot is needed to activate the new firmware
 
 Configuration
 -------------
