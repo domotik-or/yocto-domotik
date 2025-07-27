@@ -26,7 +26,9 @@ RDEPENDS:${PN} += " \
     ${PYTHON_PN}-aiohttp \
     ${PYTHON_PN}-aiomqtt \
     ${PYTHON_PN}-can \
+    ${PYTHON_PN}-pigpio \
     ${PYTHON_PN}-pyserial \
+    ${PYTHON_PN}-smbus2 \
 "
 
 SYSTEMD_SERVICE:${PN} = "domio.service"

@@ -20,8 +20,8 @@ diff -ruN ufw-0.36.1.orig/conf/user6.rules ufw-0.36.1/conf/user6.rules
 +:ufw6-user-limit-accept - [0:0]
  ### RULES ###
 +
-+### tuple ### allow tcp 8080 ::/0 any ::/0 in
-+-A ufw6-user-input -p tcp --dport 8080 -j ACCEPT
++### tuple ### allow tcp 8085 ::/0 any ::/0 in
++-A ufw6-user-input -p tcp --dport 8085 -j ACCEPT
 +
 +### tuple ### allow tcp 22 ::/0 any ::/0 in
 +-A ufw6-user-input -p tcp --dport 22 -j ACCEPT
@@ -64,8 +64,8 @@ diff -ruN ufw-0.36.1.orig/conf/user.rules ufw-0.36.1/conf/user.rules
  :ufw-user-limit-accept - [0:0]
  ### RULES ###
 +
-+### tuple ### allow tcp 8080 0.0.0.0/0 any 0.0.0.0/0 in
-+-A ufw-user-input -p tcp --dport 8080 -j ACCEPT
++### tuple ### allow tcp 8085 0.0.0.0/0 any 0.0.0.0/0 in
++-A ufw-user-input -p tcp --dport 8085 -j ACCEPT
 +
 +### tuple ### allow tcp 22 0.0.0.0/0 any 0.0.0.0/0 in
 +-A ufw-user-input -p tcp --dport 22 -j ACCEPT

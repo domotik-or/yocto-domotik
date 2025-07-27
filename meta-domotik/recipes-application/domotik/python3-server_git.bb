@@ -12,7 +12,6 @@ SRC_URI = "git://github.com/domotik-or/server.git;branch=master;protocol=https"
 # FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI += "\
-    file://server.env \
     file://server.service \
     file://server.toml \
 "
@@ -23,10 +22,13 @@ inherit python_flit_core systemd
 
 RDEPENDS:${PN} += " \
     ${PYTHON_PN}-aiohttp \
+    ${PYTHON_PN}-aiohttp-cors \
+    ${PYTHON_PN}-aiohttp-jinja2 \
     ${PYTHON_PN}-aiosqlite \
     ${PYTHON_PN}-dotenv \
     ${PYTHON_PN}-matplotlib \
     ${PYTHON_PN}-qbstyles \
+    ${PYTHON_PN}-pytz \
 "
 
 SYSTEMD_SERVICE:${PN} = "server.service"
@@ -36,7 +38,6 @@ FILES:${PN} += "${sysconfdir}/domotik/server.toml"
 
 do_install:append() {
   install -d ${D}/${sysconfdir}/domotik
-  install -m 0644 ${WORKDIR}/server.env ${D}/${sysconfdir}/domotik/server.env
   install -m 0644 ${WORKDIR}/server.toml ${D}/${sysconfdir}/domotik/server.toml
   install -d ${D}/${systemd_unitdir}/system
   install -m 0644 ${WORKDIR}/server.service ${D}/${systemd_unitdir}/system

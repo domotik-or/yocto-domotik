@@ -27,6 +27,7 @@ S = "${WORKDIR}/git"
 inherit python_flit_core systemd
 
 RDEPENDS:${PN} += " \
+    ${PYTHON_PN}-aiohttp \
     ${PYTHON_PN}-aiomqtt \
     ${PYTHON_PN}-aiosmtplib \
     ${PYTHON_PN}-aiosqlite \
@@ -52,9 +53,16 @@ do_install:append() {
     install -d ${D}/home/domotik/scripts
     install -m 755 ${WORKDIR}/cleanup.sh ${D}/home/domotik/scripts
     install -m 644 ${WORKDIR}/snapshot.sh ${D}/home/domotik/scripts
+    install -m 644 ${S}/scripts/cleanup.sql ${D}/home/domotik/scripts
 
     # database
     install -d ${D}/home/domotik/database
+}
+
+# https://stackoverflow.com/a/70186846
+pkg_postinst_ontarget:${PN}() {
+    chown -R domotik:domotik $D/home/domotik/database
+    chown -R domotik:domotik $D/home/domotik/scripts
 }
 
 SYSTEMD_SERVICE:${PN} = "automations.service"
@@ -66,4 +74,5 @@ FILES:${PN} += "${sysconfdir}/cron.d/domotik-snapshot"
 FILES:${PN} += "/home/domotik/database"
 FILES:${PN} += "/home/domotik/scripts"
 FILES:${PN} += "/home/domotik/scripts/cleanup.sh"
+FILES:${PN} += "/home/domotik/scripts/cleanup.sql"
 FILES:${PN} += "/home/domotik/scripts/snapshot.sh"

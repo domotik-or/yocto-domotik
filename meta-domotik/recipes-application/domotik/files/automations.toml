@@ -1,5 +1,5 @@
 [secret]
-env_path = "/home/domotik/.config/domotik/automations.env"
+env_path = "/etc/domotik/automations.env"
 env_names = ["MAIL_FROM", "MAIL_TO", "SMTP_USERNAME", "SMTP_PASSWORD"]
 
 [database]

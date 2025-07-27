@@ -41,8 +41,8 @@ Copie de l'image sur la carte SD
 
 .. code-block:: console
 
-    umount /dev/sdb?
-    bzcat i/mnt/yocto/domotik/yocto-domotik/build/tmp/deploy/images/raspberrypi4-64/domotik-raspberrypi4-64.rootfs.wic.bz2 > /dev/sdb
+    umount /dev/sde?
+    bzcat /mnt/yocto/domotik/yocto-domotik/build/tmp/deploy/images/raspberrypi4-64/domotik-raspberrypi4-64.rootfs.wic.bz2 | sudo dd of=/dev/sde bs=1M
     sync
 
 Exemple de création d'un fichier .bbappend
@@ -57,7 +57,7 @@ Eexemple  pour changer la valeur de la variable variable ALTERNATIVE_PRIORITY
 Faire de la place sur le disque dur
 -----------------------------------
 
-Dans le répertoire `sstate-cache` :
+Dans le répertoire `poky` :
 
 .. code-block:: console
 
