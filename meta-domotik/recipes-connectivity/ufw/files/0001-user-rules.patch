@@ -1,7 +1,7 @@
-diff -ruN ufw-0.36.1.orig/conf/user6.rules ufw-0.36.1/conf/user6.rules
+diff -ur ufw-0.36.1.orig/conf/user6.rules ufw-0.36.1/conf/user6.rules
 --- ufw-0.36.1.orig/conf/user6.rules	2018-01-14 20:28:35.000000000 +0100
-+++ ufw-0.36.1/conf/user6.rules	2023-03-13 12:35:51.263941890 +0100
-@@ -2,5 +2,40 @@
++++ ufw-0.36.1/conf/user6.rules	2025-07-27 17:12:48.112599304 +0200
+@@ -2,5 +2,42 @@
  :ufw6-user-input - [0:0]
  :ufw6-user-output - [0:0]
  :ufw6-user-forward - [0:0]
@@ -20,6 +20,8 @@ diff -ruN ufw-0.36.1.orig/conf/user6.rules ufw-0.36.1/conf/user6.rules
 +:ufw6-user-limit-accept - [0:0]
  ### RULES ###
 +
++### tuple ### allow tcp 8080 ::/0 any ::/0 in
++-A ufw6-user-input -p tcp --dport 8080 -j ACCEPT
 +### tuple ### allow tcp 8085 ::/0 any ::/0 in
 +-A ufw6-user-input -p tcp --dport 8085 -j ACCEPT
 +
@@ -42,10 +44,10 @@ diff -ruN ufw-0.36.1.orig/conf/user6.rules ufw-0.36.1/conf/user6.rules
 +-A ufw6-user-limit-accept -j ACCEPT
 +### END RATE LIMITING ###
  COMMIT
-diff -ruN ufw-0.36.1.orig/conf/user.rules ufw-0.36.1/conf/user.rules
+diff -ur ufw-0.36.1.orig/conf/user.rules ufw-0.36.1/conf/user.rules
 --- ufw-0.36.1.orig/conf/user.rules	2018-01-14 20:28:35.000000000 +0100
-+++ ufw-0.36.1/conf/user.rules	2023-03-13 12:35:42.007903115 +0100
-@@ -2,10 +2,40 @@
++++ ufw-0.36.1/conf/user.rules	2025-07-27 17:13:05.635310842 +0200
+@@ -2,10 +2,42 @@
  :ufw-user-input - [0:0]
  :ufw-user-output - [0:0]
  :ufw-user-forward - [0:0]
@@ -64,6 +66,8 @@ diff -ruN ufw-0.36.1.orig/conf/user.rules ufw-0.36.1/conf/user.rules
  :ufw-user-limit-accept - [0:0]
  ### RULES ###
 +
++### tuple ### allow tcp 8080 0.0.0.0/0 any 0.0.0.0/0 in
++-A ufw-user-input -p tcp --dport 8080 -j ACCEPT
 +### tuple ### allow tcp 8085 0.0.0.0/0 any 0.0.0.0/0 in
 +-A ufw-user-input -p tcp --dport 8085 -j ACCEPT
 +
