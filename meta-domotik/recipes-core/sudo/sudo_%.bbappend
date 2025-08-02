@@ -8,5 +8,7 @@ do_install:append () {
     chmod 0644 "${D}/etc/sudoers.d/0001_${AUTHORIZED_USER_NAME}"
 }
 
-FILES_${PN} +=  "/etc/sudoers.d \
-               /etc/sudoers.d/0001_${AUTHORIZED_USER_NAME}"
+FILES_${PN} +=  "\
+    /etc/sudoers.d \
+    /etc/sudoers.d/0001_${AUTHORIZED_USER_NAME} \
+"

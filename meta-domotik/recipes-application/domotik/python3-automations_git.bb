@@ -27,6 +27,7 @@ S = "${WORKDIR}/git"
 inherit python_flit_core systemd
 
 RDEPENDS:${PN} += " \
+    cronie \
     ${PYTHON_PN}-aiohttp \
     ${PYTHON_PN}-aiomqtt \
     ${PYTHON_PN}-aiosmtplib \
@@ -52,7 +53,7 @@ do_install:append() {
     # scripts
     install -d ${D}/home/domotik/scripts
     install -m 755 ${WORKDIR}/cleanup.sh ${D}/home/domotik/scripts
-    install -m 644 ${WORKDIR}/snapshot.sh ${D}/home/domotik/scripts
+    install -m 755 ${WORKDIR}/snapshot.sh ${D}/home/domotik/scripts
     install -m 644 ${S}/scripts/cleanup.sql ${D}/home/domotik/scripts
 
     # database
