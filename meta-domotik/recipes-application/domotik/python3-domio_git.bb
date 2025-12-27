@@ -22,11 +22,10 @@ S = "${WORKDIR}/git"
 inherit python_flit_core systemd
 
 RDEPENDS:${PN} += " \
-    pigpio \
     ${PYTHON_PN}-aiohttp \
     ${PYTHON_PN}-aiomqtt \
     ${PYTHON_PN}-can \
-    ${PYTHON_PN}-pigpio \
+    ${PYTHON_PN}-gpiod \
     ${PYTHON_PN}-pyserial \
     ${PYTHON_PN}-smbus2 \
 "
